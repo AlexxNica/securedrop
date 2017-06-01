@@ -14,5 +14,6 @@ securedrop_app_rsync_opts:
   - "--exclude=*.git"
   - "--exclude=*aths"
   - "--exclude=*.deb"
+  - "--exclude=*update_python_requirements"
 
 securedrop_local_build: "../../build"
