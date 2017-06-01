@@ -82,10 +82,10 @@ Workstations
   <https://tails.boum.org/news/Tails_3.0_will_require_a_64-bit_processor/index.en.html>`_.
 
 These components are necessary to do the initial installation of
-SecureDrop and to process submissions using the airgapped workflow.
+SecureDrop and to process submissions using the air-gapped workflow.
 
 -  ***Secure Viewing Station* (*SVS*)**: 1 physical computer used as an
-   airgap to decrypt and view submissions retrieved from the
+   air gap to decrypt and view submissions retrieved from the
    *Application Server*.
 
    -  The chosen hardware should be solely used for this purpose and
@@ -174,7 +174,7 @@ Offline Printer
 It is often useful to print submissions from the *Secure Viewing Station* for
 review and annotation.
 
-.. warning:: To maintain the integrity of the airgap, this printer should be
+.. warning:: To maintain the integrity of the air gap, this printer should be
              dedicated to use with the *Secure Viewing Station*, connected via
              a wired connection, and should not have any wireless communication
              capabilities.
@@ -230,36 +230,39 @@ small components (like USB sticks).
 .. _`Brother P-Touch PT-210`: https://www.amazon.com/Brother-P-Touch-PT-D210-Label-Maker/dp/B01BTMEKRQ/ref=zg_bs_226180_1
 .. _`Epson LabelWorks LW-300`: https://www.amazon.com/Epson-LabelWorks-LW-300-Label-Maker/dp/B005J7Y6HW/ref=pd_sbs_229_7
 
-
 Specific Hardware Recommendations
 ---------------------------------
 
 Application and Monitor Servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Intel NUC (Next Unit of Computing) is a capable, cheap, quiet, and
-low-powered device that can be used for the SecureDrop servers. There
-are a `variety of
-models <https://www-ssl.intel.com/content/www/us/en/nuc/products-overview.html>`__
-to choose from. We recommend the
-`D54250WYK <https://www-ssl.intel.com/content/www/us/en/nuc/nuc-kit-d54250wyk.html>`__
-because it has a mid-range CPU (Intel i5), the common Mini DisplayPort
-connector for the monitor, and USB 3.0 ports for faster OS installation
-and data transfer.
+The Intel NUC (Next Unit of Computing) is an inexpensive, low-powered desktop
+computer that's both quiet and capable of being used for the SecureDrop servers.
+There are a `variety of models <https://www-ssl.intel.com/content/www/us/en/nuc/products-overview.html>`__
+to choose from. While we're currently testing other alternatives, and plan on
+adding them to documentation in the near future, the Intel NUC is currently the
+only one we've sufficiently tested and can confidently recommend.
 
-Conveniently (for the paranoid), it supports wireless networking (Wifi
-and Bluetooth) through *optional* expansion cards not included by
-default - which means you don't have to spend time ripping out the
-wireless hardware before beginning the installation.
+We currently recommend the
+`NUC5i5MYHE <https://ark.intel.com/products/84861/Intel-NUC-Kit-NUC5i5MYHE>`__,
+because of its mid-range i5 CPU, common Mini DisplayPort for connecting a
+monitor, and multiple USB 3.0 ports for faster OS installation and data
+transfer. Most importantly, it supports wireless networking (Wifi and Bluetooth)
+through **optional** expansion cards; this means you can configure it **without**
+any wireless components at the time of purchase. This makes it highly suitable
+for the *Application Server*, *Monitor Server*, and *SVS*, because you don't
+have the burden of removing hardware before beginning the installation process.
 
-.. note:: If you purchase the NUC from `Amazon
-	  <http://www.amazon.com/Intel-D54250WYK-DisplayPort-Graphics-i5-4250U/dp/B00F3F38O2/>`__,
-	  make sure you click "With Powercord" to have one included in
-	  the package.
+.. note:: In the past, we recommended the
+   `D54250WYK <https://www-ssl.intel.com/content/www/us/en/nuc/nuc-kit-d54250wyk.html>`__,
+   but it has since reached both the `End of Life and End of Interactive Support
+   <https://ark.intel.com/products/series/70407/Intel-NUC-Boards-and-Kits>`__
+   stages. If you currently have one, and need general hardware support, you'll
+   have to engage with Intel's `community forum <https://communities.intel.com/community/tech/nuc>`__.
 
 The NUCs come as kits, and some assembly is required. You will
-need to purchase the RAM and hard drive separately for each NUC and
-insert the cards into the NUC before it can be used. We recommend:
+need to purchase the RAM and hard drive modules separately, for each NUC, and
+insert these modules into the NUC before it can be used. We recommend:
 
 -  2 `240 GB SSDs <http://www.amazon.com/dp/B00BQ8RKT4/>`__
 -  A `4 GB (4GBx2) memory
@@ -267,35 +270,14 @@ insert the cards into the NUC before it can be used. We recommend:
 
    -  You can put one 4GB memory stick in each of the servers.
 
-.. note:: The D54250WYK has recently been `EOL'ed by Intel
-	  <http://ark.intel.com/products/series/70407/Intel-NUC-Boards-and-Kits>`__.
-	  Availability and prices may be subject to change. We are
-	  working on analyzing alternative recommendations, but there
-	  are no immediately obvious alternatives that share the
-	  benefits of the D54250WYK (primarily, the lack of integrated
-	  wireless networking hardware).
 
-.. note:: An earlier release of SecureDrop (0.2.1) was based on Ubuntu
-	  12.04.1 (precise). We encountered issues installing this
-	  version of Ubuntu on some types of Intel NUCs. The problem
-	  manifested after installing Ubuntu on the NUC. The
-	  installation would complete, but rebooting after
-	  installation would not succeed.
-
-	  We have not encountered this or any similar problems in
-	  testing the current release series (0.3.x) with the Intel
-	  NUCs. Since 0.3 is based on Ubuntu 14.04.1 (trusty), we
-	  believe the issue has been resolved in the newer release of
-	  Ubuntu.
-
-	  If you do encounter issues booting Ubuntu on the NUCs, try
-	  updating the BIOS according to `these instructions
-	  <http://arstechnica.com/gadgets/2014/02/new-intel-nuc-bios-update-fixes-steamos-other-linux-booting-problems/>`__.
-
-.. note:: Some BIOS versions on the NUC will cause the server to
-	  `brick itself <https://communities.intel.com/message/359708>`__ if
-	  the device attempts to suspend. Some suggestions include disabling
-	  suspend in the BIOS as well as OS options like "wake on LAN".
+.. caution:: Some BIOS versions on the NUC will cause the server to
+   `brick itself <https://communities.intel.com/message/359708>`__ if
+   the device attempts to suspend. Some suggestions include disabling
+   "suspend" in the BIOS, as well as OS options like "wake on LAN". If you
+   _do_ encounter issues booting Ubuntu on the NUCs, try updating the BIOS
+   according to
+   `these instructions <https://arstechnica.com/gadgets/2014/02/new-intel-nuc-bios-update-fixes-steamos-other-linux-booting-problems/>`__.
 
 *Secure Viewing Station* (*SVS*)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -309,25 +291,24 @@ not need a hard drive or network device; in fact, we recommend removing
 these components if they are already present.
 
 One option is to buy a Linux-compatible laptop such as a `Lenovo
-Thinkpad <http://shop.lenovo.com/us/en/laptops/thinkpad/t-series/t540p/>`__.
-You can also repurpose an old laptop if you have one available.
+Thinkpad <http://http://www3.lenovo.com/us/en/laptops/thinkpad/thinkpad-t-series/c/thinkpadt>`__;
+we've tested the T420 and successfully removed the wireless components with ease.
+It's possible to repurpose old laptops from other manufacturers, as long as the
+wireless components are removable.
 
-Another option is to buy an `Intel NUC
-D54250WYK <http://www.amazon.com/Intel-D54250WYK-DisplayPort-Graphics-i5-4250U/dp/B00F3F38O2/>`__
-(same model as the servers) with a power cord and `4 GB of
-memory <http://www.amazon.com/Crucial-PC3-12800-204-Pin-Notebook-CT2CP25664BF160B/dp/B005MWQ6WC/>`__,
-but note that you will also need to get a monitor and a wired keyboard
-and mouse. It does not come with a hard drive or wireless networking
-hardware by default, so you will not need to remove these components
-before using it. However, we do recommend taping over the IR receiver
-with some opaque masking tape.
+Just as with the servers, you can also use an Intel NUC for the *SVS*. As noted
+before, NUCs do not ship with a hard drive, and can be configured without any
+wireless components, so you'll save time by not having to remove these, since
+they won't be present. However, MUCs do contain an IR receiver, which we
+recommend taping over with opaque masking tape.
 
-Note that if you do want to use a NUC for the *SVS*, you *should not* use
-any of the new generation of NUCs, which have names starting with "NUC5"
-(e.g.
-`NUC5i5RYK <https://www-ssl.intel.com/content/www/us/en/nuc/nuc-kit-nuc5i5ryk.html>`__..
-These NUCs have wireless networking built into the motherboard, and it
-is impossible to physically remove.
+If you choose to use an Intel NUC that differs from our recommended
+model, make sure you use one that offers wireless as an **option**. If the model
+is advertised as having "integrated wireless", such as the `NUC5i5RYK`, this
+means it's built into the motherboard, making it physically irremovable, or
+doing so would risk damaging the unit; instead, look for attributes like
+`M.2 22×30 slot and wireless antenna pre-assembled (for wireless card support)`,
+as advertised by the `NUC5i5MYHE` that we recommend.
 
 Tails USBs
 ~~~~~~~~~~
@@ -391,12 +372,12 @@ Printers
 Careful consideration should be given to the printer used with the *SVS*.
 Most printers today have wireless functionality (WiFi or Bluetooth
 connectivity) which should be **avoided** because it could be used to
-compromise the airgap.
+compromise the air gap.
 
 Unfortunately, it is difficult to find printers that work with Tails,
 and it is increasingly difficult to find non-wireless printers at all.
 To assist you, we have compiled the following partial list of
-airgap-safe printers that have been tested and are known to work with
+air gap-safe printers that have been tested and are known to work with
 Tails:
 
 +-------------------------+----------------+------------------+--------------------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
