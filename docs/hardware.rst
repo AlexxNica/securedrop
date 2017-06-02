@@ -275,7 +275,7 @@ insert these modules into the NUC before it can be used. We recommend:
    `brick itself <https://communities.intel.com/message/359708>`__ if
    the device attempts to suspend. Some suggestions include disabling
    "suspend" in the BIOS, as well as OS options like "wake on LAN". If you
-   _do_ encounter issues booting Ubuntu on the NUCs, try updating the BIOS
+   *do* encounter issues booting Ubuntu on the NUCs, try updating the BIOS
    according to
    `these instructions <https://arstechnica.com/gadgets/2014/02/new-intel-nuc-bios-update-fixes-steamos-other-linux-booting-problems/>`__.
 
@@ -299,14 +299,14 @@ wireless components are removable.
 Just as with the servers, you can also use an Intel NUC for the *SVS*. As noted
 before, NUCs do not ship with a hard drive, and can be configured without any
 wireless components, so you'll save time by not having to remove these, since
-they won't be present. However, MUCs do contain an IR receiver, which we
+they won't be present. However, NUCs *do* contain an IR receiver, which we
 recommend taping over with opaque masking tape.
 
 If you choose to use an Intel NUC that differs from our recommended
 model, make sure you use one that offers wireless as an **option**. If the model
 is advertised as having "integrated wireless", such as the `NUC5i5RYK`, this
-means it's built into the motherboard, making it physically irremovable, or
-doing so would risk damaging the unit; instead, look for attributes like
+means it's built into the motherboard, making it physically irremovable, and
+attempting to do so would risk damaging the unit; instead, look for attributes like
 `M.2 22×30 slot and wireless antenna pre-assembled (for wireless card support)`,
 as advertised by the `NUC5i5MYHE` that we recommend.
 
